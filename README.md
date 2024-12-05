@@ -27,6 +27,30 @@ Download or clone from github
 
 ### Requriements
 
+**For the DIP Course**
+
+Please install **rye** tool by following the installation instructions
+[here](https://rye.astral.sh/). Please _use the old Python_ during
+installation.
+
+Run the commands below to setup the development environment. After
+this setup, the Python version will change to 3.7 and all required
+dependencies will be installed.
+
+```sh
+source ~/.rye/env
+rye sync
+```
+
+Within this environment, please add dependencies using `rye add`
+instead of `pip install`. Here is an example.
+
+```sh
+rye add numpy
+```
+
+**The Old Method**
+
 The code has been tested under Windows 10 both with a GPU enabled (Titan X) computer and without a GPU (works but slow). It has been tested with the following dependencies
 
 - Python 3.7
