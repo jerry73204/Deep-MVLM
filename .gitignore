@@ -117,3 +117,10 @@ __MACOSX/
 
 # Rasmus stuff
 *_RAPADEBUG*
+
+# Editor
+*~
+.*~
+\#*#
+*.swp
+*.swo
