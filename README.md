@@ -3,6 +3,95 @@ A tool for accurately placing 3D landmarks on 3D facial scans based on the paper
 
 ![Overview](art/deep-mvlm-banner.png)
 
+# For the DIP Course Users
+
+### Perform Facial Landmark Prediction
+
+1. Download the project repository. The patched Deep-MVLM comes along
+   with the project repo.
+
+   ```sh
+   git clone --recursive git@github.com:jerry73204/2024-dip-final.git
+   cd 2024-dip-final/Deep-MVLM
+   ```
+
+   > If you forget the `--recursive` option, you can pull submodule
+   > contents afterwards.
+   >
+   > ```sh
+   > git submodule update --init --recursive
+   > ```
+
+2. **rye** tool is required to prepare the development
+   environment. Follow installation instructions
+   [here](https://rye.astral.sh/) to install it.
+
+3. Run the commands below to prepare the development environment. It
+   will enter the virtual environment.
+   ```sh
+   source ~/.rye/env
+   make prepare
+   ```
+
+   > Within the virtual environment, add dependencies using `rye add`
+   > instead of `pip install`. Here is an example:
+   > 
+   > ```sh
+   > rye add numpy
+   > ```
+   
+4. Prepare the input mesh file `input.obj`. Run this command to
+   perform facial landmark detection. It will take minutes.
+   
+   ```sh
+   make run MESH_FILE=input.obj
+   ```
+
+>  You can get the OBJ file in `2024-12-22 Mesh.zip` on the [shared
+>  folder](https://drive.google.com/drive/folders/1WA2gOEZpt_cTd-WdSRDxKZLm7MBWf4Dn?usp=drive_link).
+>  If you want to prepare your own mesh, follow the next section to
+>  learn the steps.
+
+### Prepare a Face Mesh from SuGaR
+
+1. Download `2024-12-14 SuGaR output.zip` from the [shared
+   folder](https://drive.google.com/drive/folders/1WA2gOEZpt_cTd-WdSRDxKZLm7MBWf4Dn?usp=drive_link). Decompress
+   the file and you'll see the folder structure like this.
+
+   ```
+   2024-12-14 SuGaR output/
+   ├── coarse/
+   ├── coarse_mesh/
+   ├── refined/
+   ├── refined_mesh/
+   ├── refined_ply/
+   └── vanilla_gs/
+   ```
+   
+2. Install Blender 4. The recommended installation method on Ubuntu is using Snap.
+
+   ```sh
+   sudo snap install blender --classic
+   ```
+   
+3. Download the `sugar_addon.py` file from the
+   [GitHub](https://github.com/Anttwo/sugar_frosting_blender_addon/). Follow
+   Installation section in the README to install the SuGaR addon on
+   Blender.
+   
+4. Open Blender. Import the SuGaR mesh shown in the steps in the
+   figure. Find the _Render_ tab in the right panel and find the _Add
+   SuGaR or Frosting Mesh_. Fill in the paths as follows.
+   
+   Path to OBJ file: `2024-12-14 SuGaR
+   output/refined_mesh/3dgs/sugarfine_3Dgs7000_densityestim02_sdfnorm02_level03_decim1000000_normalconsistency01_gaussperface1.obj`
+   
+   Path to PT file: `2024-12-14 SuGaR
+   output/refined/3dgs/sugarfine_3Dgs7000_densityestim02_sdfnorm02_level03_decim1000000_normalconsistency01_gaussperface1/15000.pt`
+   
+   ![Import SuGaR mesh in Blender](art/blender_demo.jpg)
+
+
 ## Citing Deep-MVLM
 
 If you use Deep-MVLM in your research, please cite the
@@ -26,30 +115,6 @@ If you use Deep-MVLM in your research, please cite the
 Download or clone from github
 
 ### Requriements
-
-**For the DIP Course**
-
-Please install **rye** tool by following the installation instructions
-[here](https://rye.astral.sh/). Please _use the old Python_ during
-installation.
-
-Run the commands below to setup the development environment. After
-this setup, the Python version will change to 3.7 and all required
-dependencies will be installed.
-
-```sh
-source ~/.rye/env
-rye sync
-```
-
-Within this environment, please add dependencies using `rye add`
-instead of `pip install`. Here is an example.
-
-```sh
-rye add numpy
-```
-
-**The Old Method**
 
 The code has been tested under Windows 10 both with a GPU enabled (Titan X) computer and without a GPU (works but slow). It has been tested with the following dependencies
 
