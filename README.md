@@ -91,6 +91,20 @@ A tool for accurately placing 3D landmarks on 3D facial scans based on the paper
    
    ![Import SuGaR mesh in Blender](art/blender_demo.jpg)
 
+5. Remove the background mesh and keep only the head. Watch the [video
+   tutorial](https://youtu.be/xL3me0tqEVk?si=_6-9fxwfr-aBMh_s) to
+   learn how to use _Bisect_ tool in Blender to crop out redundant
+   mesh. There are pre-edited Blender files on the [shared
+   folder](https://drive.google.com/drive/folders/1WA2gOEZpt_cTd-WdSRDxKZLm7MBWf4Dn?usp=drive_link).
+
+6. Export the OBJ file. Click the export button at the toolbar -> File
+   -> Export -> Wavefront (.obj). In the prompt dialog, change the options as follows.
+   - Enable _Colors_ in the _Geometry_ section on the right panel.
+   - In the _Materials_ section on the right panel, select _Copy_ for
+     the Path Mode.
+
+7. Patch the exported .mtl file. Open the .mtl file along side the
+   .obj file. Change the line starting with `map_Ke` to `map_Kd`.
 
 ## Citing Deep-MVLM
 
