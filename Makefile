@@ -11,4 +11,4 @@ prepare:
 	rye sync
 
 run:
-	python predict.py --c configs/DTU3D-RGB.json --n $(MESH_FILE)
+	python predict.py --c configs/DTU3D-RGB+depth.json --n $(MESH_FILE)
